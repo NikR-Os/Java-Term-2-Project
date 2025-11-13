@@ -4,7 +4,8 @@ public class Country
     private final String capitalCityName;
     private final String facts[];
 
-    public Country(final String name, final String capitalCityName)
+    public Country(final String name, final String capitalCityName,
+                   final String factA, final String factB, final String factC)
     {
         this.name = name;
         this.capitalCityName = capitalCityName;
