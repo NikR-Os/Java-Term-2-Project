@@ -1,10 +1,9 @@
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Word
@@ -24,10 +23,13 @@ public class Word
 
             path = Paths.get("src", "resources", letter + ".txt");
 
-            try
+            try (final BufferedReader reader = Files.newBufferedReader(path))
             {
-                final List<String> lines;
-                lines = Files.readAllLines(path);
+                String line;
+                while ((line = reader.readLine()) != null)
+                {
+                    System.out.println(line);
+                }
             }
             catch (final IOException e)
             {
