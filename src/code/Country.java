@@ -2,14 +2,14 @@ public class Country
 {
     private final String name;
     private final String capitalCityName;
-    private final String facts[];
+    private final String[] facts;
 
     public Country(final String name, final String capitalCityName,
                    final String factA, final String factB, final String factC)
     {
         this.name = name;
         this.capitalCityName = capitalCityName;
-        this.facts = new String[3];
+        this.facts = new String[] {factA, factB, factC};
     }
 
     public String getName()
