@@ -28,11 +28,7 @@ public class Word
             }
 
             final Path path;
-
-
-
-
-
+            
             path = Paths.get("src", "resources", letter + ".txt");
 
             try (final BufferedReader reader = Files.newBufferedReader(path))

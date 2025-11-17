@@ -15,8 +15,6 @@ public class Main
 
         userString = userInputScan.nextLine();
 
-        Word myWord = new Word();
-
         do
         {
             System.out.println("Enter W to play the Word game.");
