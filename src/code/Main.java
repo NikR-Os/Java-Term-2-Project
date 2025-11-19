@@ -13,30 +13,34 @@ public class Main
         String userString;
         final Scanner userInputScan = new Scanner(System.in);
 
-        userString = userInputScan.nextLine();
-
         do
         {
+            System.out.println("Select an option:");
             System.out.println("Enter W to play the Word game.");
             System.out.println("Enter N to play the Number game.");
             System.out.println("Enter M to play the My game.");
             System.out.println("Enter Q to quit.");
 
-            if(userString.equalsIgnoreCase("W"))
-            {
-                // play word game
-            } else if(userString.equalsIgnoreCase("N"))
-            {
-                // play number game
-            } else if(userString.equalsIgnoreCase("M"))
-            {
-                // Play my game
-            } else
-            {
-                System.err.println("Please enter a valid character.");
-            }
-
             userString = userInputScan.nextLine();
+
+            switch(userString.toUpperCase())
+            {
+                case "W":
+                    WordGame wordGame;
+                    wordGame = new WordGame();
+                    break;
+
+                case "N":
+                    
+                    break;
+
+                case "M":
+
+                    break;
+
+                default:
+                    System.out.println("Invalid input. Try again.");
+            }
 
         } while(!(userString.equalsIgnoreCase("Q")));
 
