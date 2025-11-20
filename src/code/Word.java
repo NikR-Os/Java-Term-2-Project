@@ -63,10 +63,11 @@ public class Word
                 e.printStackTrace();
             }
         }
-        for (Map.Entry<String, Country> entry : countries.entrySet()) {
-            final String fact;
-            fact = entry.getValue().getFacts()[0];
-            System.out.println("Country: " + entry.getKey() + ", Values: " + entry.getValue().getCapitalCityName() + ", " + fact);
-        }
+
+    }
+
+    public Map<String, Country> getCountries()
+    {
+        return countries;
     }
 }
