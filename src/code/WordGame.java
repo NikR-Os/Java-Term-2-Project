@@ -1,3 +1,4 @@
+
 public class WordGame
 {
 
@@ -11,10 +12,13 @@ public class WordGame
 
         word = new Word();
 
-        while  (wantToPlay)
+        while (wantToPlay)
         {
             final int randomCountry;
             final int randomQuestionType;
         }
     }
+
+
+
 }
