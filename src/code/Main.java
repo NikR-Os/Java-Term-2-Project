@@ -1,8 +1,4 @@
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.util.Scanner;
 
@@ -12,7 +8,7 @@ import java.util.Scanner;
  * @author Nikolas Rose
  * @version 1.0
  */
-public class Main extends Application
+public class Main
 {
     public static void main(final String[] args)
     {
@@ -32,14 +28,34 @@ public class Main extends Application
             switch (userString.toUpperCase())
             {
                 case "W":
-                    WordGame wordGame;
-                    wordGame = new WordGame();
-                    break;
+                {
+                    System.out.println("--- Welcome to Word Game! ---");
 
+                    final WordGame wordGame;
+                    boolean playing;
+                    int gamesPlayed;
+                    String userAnswer;
+
+                    wordGame = new WordGame();
+                    playing = true;
+                    gamesPlayed = 0;
+
+                    do
+                    {
+                        final String question;
+
+
+                        question = wordGame.generateQuestion();
+                        userAnswer = userInputScan.nextLine();
+                        // Still need to implement score
+
+
+                    } while (playing || !userAnswer.equalsIgnoreCase("Q"));
+
+                    break;
+                }
                 case "N":
-                    NumberGameGUI numberGame;
-                    numberGame = new NumberGameGUI();
-                    launch(args);
+                    NumberGameLauncher.launchGUI();
                     break;
 
                 case "M":
@@ -53,17 +69,5 @@ public class Main extends Application
         } while (!(userString.equalsIgnoreCase("Q")));
 
 
-    }
-
-    @Override
-    public void start(final Stage stage)
-    {
-        final Label helloLabel = new Label("Hello, World!");
-        final VBox root = new VBox(helloLabel);
-        final Scene scene = new Scene(root, 300, 200);
-
-        stage.setScene(scene);
-        stage.setTitle("Hello JavaFX");
-        stage.show();
     }
 }

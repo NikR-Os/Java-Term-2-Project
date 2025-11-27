@@ -1,14 +1,16 @@
+import javafx.application.Application;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public abstract class NumberGame implements Startable
+public abstract class NumberGame extends Application implements Startable
 {
-    final static int BOARD_SIZE = 20;
-    final static int INITIAL_SQUARE_VALUE = 0;
-    final static int MINIMUM_GENERATED_VALUE = 1;
-    final static int MAXIMUM_GENERATED_VALUE = 1000;
+    final static int BOARD_SIZE                 = 20;
+    final static int INITIAL_SQUARE_VALUE       = 0;
+    final static int MINIMUM_GENERATED_VALUE    = 1;
+    final static int MAXIMUM_GENERATED_VALUE    = 1000;
 
     private final int[] board;
     private final Random random;
@@ -19,6 +21,7 @@ public abstract class NumberGame implements Startable
     {
         board = new int[BOARD_SIZE];
         random = new Random();
+
     }
 
     @Override
@@ -53,6 +56,11 @@ public abstract class NumberGame implements Startable
         return board[location];
     }
 
+    public int getCurrentNumber()
+    {
+        return currentNumber;
+    }
+
     public boolean isBoardFull()
     {
         for(int number : board)
@@ -65,16 +73,22 @@ public abstract class NumberGame implements Startable
         return true;
     }
 
+    public void setBoardSquare(final int location, final int value)
+    {
+        board[location] = value;
+    }
+
     public boolean isAscending()
     {
-        int last = -1; // Remove magic number
-        for(int number : board)
+        int last = INITIAL_SQUARE_VALUE;
+        for (int number : board)
         {
-            if(number == last)
+            System.out.println("Number: " + number);
+            if (number == INITIAL_SQUARE_VALUE)
             {
                 continue;
             }
-            if (number < last)
+            else if (number < last)
             {
                 return false;
             }

@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class WordGame
 {
-    final static int NUMBER_OF_QUESTION_TYPES;
+    private final static int NUMBER_OF_QUESTION_TYPES;
 
     static
     {
@@ -13,41 +12,46 @@ public class WordGame
     }
 
     private final Word word;
-    private final Scanner scanner;
     private final Random rand;
-
+    private String answer;
 
     public WordGame()
     {
         this.word = new Word();
-        this.scanner = new Scanner(System.in);
         this.rand = new Random();
-
-        startGameLoop();
     }
 
-    private void startGameLoop()
+    public String generateQuestion()
     {
-        System.out.println("--- Welcome to Word Game! ---");
-
         boolean playing  = true;
 
-        while(playing)
+
+        final Country randomCountry = generateRandomCountry();
+        final int questionType = rand.nextInt(NUMBER_OF_QUESTION_TYPES);
+        final String question;
+
+        question = switch (questionType)
         {
-            final Country randomCountry = getRandomCountry();
-            final int questionType = rand.nextInt(NUMBER_OF_QUESTION_TYPES);
+            case 0 -> countryQuestion(randomCountry);
+            case 1 -> capitalCityQuestion(randomCountry);
+            case 2 -> countryFactQuestion(randomCountry);
+            default -> throw new IllegalStateException("Unexpected value: " + questionType);
+        };
 
-            switch (questionType)
-            {
-                case 0 -> askCountryQuestion();
-                case 1 -> askCountryQuestion();
-                case 2 -> askCountryQuestion();
-            }
-
-        }
+        return question;
     }
 
-    private Country getRandomCountry()
+//    private static void setAnswer(final int questionType, final Country country)
+//    {
+//        this.a switch (questionType)
+//        {
+//            case 0 -> country.getName();
+//            case 1 -> country.getCapitalCityName();
+//            case 2 -> country.getName();
+//        }
+//    }
+
+    private Country generateRandomCountry()
     {
         final List<Country> list;
         final Country randomCountry;
@@ -58,18 +62,48 @@ public class WordGame
         return randomCountry;
     }
 
-    private void askCountryQuestion()
+    private String countryQuestion(Country randomCountry)
     {
+        final String randomCountryCapitalCity;
+        final StringBuilder question;
 
+        randomCountryCapitalCity = randomCountry.getCapitalCityName();
+        question = new StringBuilder("Which country has the capital city named ");
+
+        question.append(randomCountryCapitalCity);
+        question.append("?");
+
+        return question.toString();
     }
 
-    private void askCapitalCityQuestion()
+    private String capitalCityQuestion(Country randomCountry)
     {
+        final String randomCountryName;
+        final StringBuilder question;
 
+        randomCountryName = randomCountry.getName();
+        question = new StringBuilder("What is the capital city of ");
+
+        question.append(randomCountryName);
+        question.append("?");
+
+        return question.toString();
     }
 
-    private void askCountryFactQuestion()
+    private String countryFactQuestion(Country randomCountry)
     {
+        final String[] facts;
+        final String fact;
+        final StringBuilder question;
 
+        facts  = randomCountry.getFacts();
+        fact = facts[rand.nextInt(facts.length)];
+        question = new StringBuilder("Which country does the following fact belong to?");
+
+        question.append(System.lineSeparator());
+        question.append(System.lineSeparator());
+        question.append(fact);
+
+        return  question.toString();
     }
 }
