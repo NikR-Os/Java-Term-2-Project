@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class Word
+public class World
 {
     private final static char STARTING_FILE_LETTER = 'a';
     private final static char ENDING_FILE_LETTER = 'z';
@@ -15,7 +15,7 @@ public class Word
 
     private final Map<String, Country> countries;
 
-    public  Word()
+    public World()
     {
         countries = new HashMap<>();
         boolean startNextCountry = false;
@@ -65,7 +65,6 @@ public class Word
         }
 
     }
-
     public Map<String, Country> getCountries()
     {
         return countries;

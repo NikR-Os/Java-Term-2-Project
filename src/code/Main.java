@@ -32,25 +32,8 @@ public class Main
                     System.out.println("--- Welcome to Word Game! ---");
 
                     final WordGame wordGame;
-                    boolean playing;
-                    int gamesPlayed;
-                    String userAnswer;
 
                     wordGame = new WordGame();
-                    playing = true;
-                    gamesPlayed = 0;
-
-                    do
-                    {
-                        final String question;
-
-
-                        question = wordGame.generateQuestion();
-                        userAnswer = userInputScan.nextLine();
-                        // Still need to implement score
-
-
-                    } while (playing || !userAnswer.equalsIgnoreCase("Q"));
 
                     break;
                 }
