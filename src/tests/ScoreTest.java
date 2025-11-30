@@ -12,6 +12,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import ca.bcit.comp2522.games.Score;
+
 class ScoreTest {
 
     private static final String SCORE_FILE = "test_score.txt";
@@ -28,6 +30,7 @@ class ScoreTest {
         // Testing score calculation based on correct first and second attempts
         Score score = new Score(LocalDateTime.now(), 1, 6, 2, 1); // 6 first attempts (2 points each), 2 second attempts (1 point each)
         assertEquals(14, score.getScore(), "Score should be 14 points (6 * 2 + 2 * 1)");
+
     }
 
     @Test
